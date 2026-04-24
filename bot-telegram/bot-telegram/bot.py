@@ -5,7 +5,7 @@ import os
 import threading
 
 # Use variáveis de ambiente para segurança ou cole seu token aqui
-TOKEN = "8605448094:AAFqgXaqhh76TWE1b0ngkZLsFIB_uScl0LY"
+TOKEN = os.getenv("TELEGRAM_TOKEN") # O Railway vai preencher isso
 bot = telebot.TeleBot(TOKEN)
 
 # AJUSTE: No servidor, as imagens ficam na mesma pasta do script
