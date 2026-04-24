@@ -4,8 +4,8 @@ import time
 import os
 import threading
 
-TOKEN = "SEU_TOKEN_AQUI"
-bot = telebot.TeleBot('8605448094:AAFqgXaqhh76TWE1b0ngkZLsFIB_uScl0LY')
+TOKEN = os.getenv("TOKEN")
+bot = telebot.TeleBot(TOKEN)
 
 pasta = r"C:\Users\victor.duarte.CYNTHIACHARONE\Documents\DESCOMPLICA PYTHON\imagens"
 
