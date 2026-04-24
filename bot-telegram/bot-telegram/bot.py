@@ -4,9 +4,10 @@ import time
 import os
 import threading
 
-TOKEN = os.getenv("TOKEN")
+TOKEN = "8605448094:AAFqgXaqhh76TWE1b0ngkZLsFIB_uScl0LY"
 bot = telebot.TeleBot(TOKEN)
 
+# caminho da pasta das imagens
 pasta = r"C:\Users\victor.duarte.CYNTHIACHARONE\Documents\DESCOMPLICA PYTHON\imagens"
 
 indice = 0
@@ -59,16 +60,14 @@ def start(msg):
 
     CHAT_ID = msg.chat.id
 
-    bot.reply_to(msg, "Bem-vindo! Dicas de segurança ativadas 🔒")
+    bot.reply_to(msg, "Bot iniciado! Enviando primeira imagem...")
 
     # envia imediatamente
     enviar_imagem()
 
+    # inicia agendador só uma vez
     if not agendador_iniciado:
-        # 🔥 Segunda a sexta às 08:00
-        for dia in ["monday", "tuesday", "wednesday", "thursday", "friday"]:
-            getattr(schedule.every(), dia).at("08:00").do(enviar_imagem)
-
+        schedule.every().day.at("08:00").do(enviar_imagem)
         threading.Thread(target=rodar_agendador, daemon=True).start()
         agendador_iniciado = True
 
